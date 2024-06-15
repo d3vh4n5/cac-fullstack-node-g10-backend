@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 
 const appRouter = require('./routes/appRouter.cjs')
-const apiRouterExample = require('./routes/apiRouteExample')
+const apiRouterExample = require('./routes/examplesRouter')
 
 app.use(cors())
 app.use(express.json())
