@@ -3,7 +3,8 @@ const app = express()
 const cors = require('cors')
 
 const appRouter = require('./routes/appRouter.cjs')
-const apiRouterExample = require('./routes/examplesRouter')
+const examplesRouter = require('./routes/examplesRouter')
+const contactMessageRouter = require('./routes/contactMessageRouter')
 
 app.use(cors())
 app.use(express.json())
@@ -16,7 +17,8 @@ app.use('/', appRouter);
 
 
 // Rutas de API
-app.use('/api/v1', apiRouterExample)
+app.use('/api/v1/examples', examplesRouter)
+app.use('/api/v1/contact-messages', contactMessageRouter)
 
 
 
