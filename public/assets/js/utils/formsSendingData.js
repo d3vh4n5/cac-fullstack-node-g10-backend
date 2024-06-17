@@ -47,4 +47,20 @@ export function sendToShowData(){
     }
 }
 
+export async function postContactMessage(jsonData){
+    fetch('/api/v1/contact-messages', {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(jsonData)
+    }).then(resp => {
+        console.log(resp)
+        alert("Información enviada correctamente")
+    }).catch(e => {
+        console.error("Hubo un error al enviar el mensaje: ", e)
+        alert("Ocurrió un error al enviar la data")
+    })
+}
+
 

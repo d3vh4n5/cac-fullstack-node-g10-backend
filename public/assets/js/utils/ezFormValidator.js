@@ -99,16 +99,16 @@ export const validate = ($form = document.forms[0], {
     });
     console.log('-------------------- ')
 
-    // $form.addEventListener('submit', (event)=> {
-    //     event.preventDefault()
-    //     const valid = event.target.checkValidity()
-    //     if (valid) {
-    //         event.target.submit()
-    //         event.target.reset()
-    //     } else {
-    //         alert("Algo en el form no es valido")
-    //         console.warn(valid)
-    //         console.warn(event)
-    //     }
-    // })
+    $form.addEventListener('submit', (event)=> {
+        event.preventDefault()
+        const valid = event.target.checkValidity()
+        if (valid) {
+            event.target.submit()
+            event.target.reset()
+        } else {
+            alert("Algo en el form no es valido")
+            console.warn(valid)
+            console.warn(event)
+        }
+    })
 }
