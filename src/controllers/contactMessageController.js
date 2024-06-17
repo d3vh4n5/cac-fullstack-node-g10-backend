@@ -1,58 +1,34 @@
-// Datos handcodeados:
-
-const messages = [
-    { 
-        id: 1, 
-        name: "John",
-        surname: "Doe",
-        subject: "Test",
-        message: "Hola, les dejo un mensaje",
-    }, 
-    { 
-        id: 2, 
-        name: "Dua",
-        surname: "Lipa",
-        subject: "Love",
-        message: "Hola, la verdad que Juan me gusta mucho",
-    }, 
-]
+const ContactMessage = require('../models/ContactMessageModel')
 
 
-
-const getAllMessages = (req, res) => {
+const getAllMessages = async (req, res) => {
+    const messages = await ContactMessage.findAll()
     res.json(messages)
 }
-const getOneMessage = (req, res) => {
+const getOneMessage = async (req, res) => {
     const { id } = req.params
-    const message = messages.find( m => m.id === +id)
+    const message = await ContactMessage.findByPk(+id)
 
-    if (message !== undefined){
+    if (message){
         res.json(message)
     } else {
-        res.status(404).json({details: "Mensaje no encontrado"})
+        res.status(404).json( { error: "Mensaje no encontrado" } )
     }
 }
-const createNewMessage = (req, res) => {
-    const { name, surname, subject, message } = req.body
+const createNewMessage = async (req, res) => {
+    const { body } = req
 
-    const newContactMessage = {
-        id: messages.length + 1,
-        name, 
-        surname,
-        subject,
-        message
-    }
-
-    console.log(newContactMessage)
+    console.log(body)
 
     try{
-
-        if (messages.push(newContactMessage)) return res.json(newContactMessage)
-        else return res.status(500).json({details: "No se pudo realizar la inserción"})
+        const message = new ContactMessage(body)
+        await message.save()
+        res.json(message)
     } catch (e){
         console.log("Hubo un error:",e)
+        res.status(500).json({ error: "No se pudo realizar la inserción"})
     }
 
 }
 
-module.exports = {getAllMessages, getOneMessage, createNewMessage}
+module.exports = { getAllMessages, getOneMessage, createNewMessage }

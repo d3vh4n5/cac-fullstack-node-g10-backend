@@ -13,12 +13,12 @@ const examples = [
     {id: 5, data: "Esto es un ejemplo"},
 ]
 
-const returnAllExamples = ( _, res ) => {
+const returnAllExamples = async ( _, res ) => {
     // Some code, go to DB, whatever..
     res.json(examples)
 }
 
-const returnOneExample = (req, res) => {
+const returnOneExample = async (req, res) => {
     const { id } = req.params
     console.log(id)
     const example = examples.find( ex => ex.id === +id)
@@ -30,7 +30,7 @@ const returnOneExample = (req, res) => {
     }
 }
 
-const addNewExample = (req, res) => {
+const addNewExample = async (req, res) => {
     const { data } = req.body
 
     const newExample = {

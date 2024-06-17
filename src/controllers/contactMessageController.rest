@@ -14,6 +14,9 @@ Content-Type: application/json
 { 
     "name": "Elon",
     "surname": "Musk",
+    "email": "mail@spacex.com",
     "subject": "Hiring",
-    "message": "Hola, quiero contratarlos en Space X"
+    "message": "Hola, quiero contratarlos para mi empresa Space X",
+    "type": 1,
+    "file": "Esto necesita una cambio //caperta/archivo"
 }
