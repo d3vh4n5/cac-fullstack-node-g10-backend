@@ -3,7 +3,7 @@ const ContactMessage = require('../models/ContactMessageModel')
 
 const getAllMessages = async (req, res) => {
     const messages = await ContactMessage.findAll()
-    res.json(messages)
+    res.json( messages )
 }
 const getOneMessage = async (req, res) => {
     const { id } = req.params

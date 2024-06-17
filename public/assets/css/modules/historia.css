@@ -1,0 +1,16 @@
+.btn-enviar{
+	background: #EA484E;
+	color: #fff;
+	margin: auto;
+	padding: 10px 40px;
+	cursor: pointer;
+	font-size: 14px;
+
+}
+.btn-enviar:hover{
+background: #0EA7E7;
+transform: scale(1.1);
+}
+.btn-enviar:active{
+	transform: scale(1.2);
+}

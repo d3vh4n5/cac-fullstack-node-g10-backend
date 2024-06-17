@@ -1,0 +1,23 @@
+### Prueba de todos los recursos
+GET http://localhost:5000/api/v1/contact-messages/
+
+### Prueba con ID
+GET http://localhost:5000/api/v1/contact-messages/2
+
+### Prueba de id inexistente
+GET http://localhost:5000/api/v1/contact-messages/222222
+
+### Crear un recurso nuevo
+POST http://localhost:5000/api/v1/contact-messages/
+Content-Type: application/json
+
+{ 
+    "name": "Elon",
+    "surname": "Musk",
+    "email": "mail@spacex.com",
+    "subject": "Hiring",
+    "message": "Hola, quiero contratarlos para mi empresa Space X",
+    "type": 1,
+    "file": "Esto necesita una cambio //caperta/archivo",
+    "read": false
+}

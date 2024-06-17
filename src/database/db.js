@@ -35,8 +35,14 @@ const dbConnTest = async () => {
         )
 
         await db.authenticate()
-
         console.log("Conectado a la base de datos")
+
+        // Sincroniza el modelo con la base de datos
+        await db.sync();
+        // await db.sync({ force: true })
+        // await db.sync({ alter: true })
+        console.log('Database & tables created!');
+
     } catch (error) {
         console.log('Error al conectar la base de datos: ', error)
     }

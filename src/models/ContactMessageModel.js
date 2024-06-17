@@ -17,6 +17,7 @@ const ContactMessage = db.define("contact_messages", {
     message: { type: DataTypes.STRING },
     type: { type: DataTypes.INTEGER },
     file: { type: DataTypes.STRING },
+    read: { type: DataTypes.BOOLEAN }
 })
 
 module.exports = ContactMessage

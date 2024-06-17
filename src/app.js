@@ -6,11 +6,10 @@ const appRouter = require('./routes/appRouter.cjs')
 const examplesRouter = require('./routes/examplesRouter')
 const contactMessageRouter = require('./routes/contactMessageRouter')
 
-app.use(cors())
-app.use(express.json())
-
-// Servidor de archivos estáticos
-app.use(express.static('public'))
+// middlewares
+app.use(cors()) // Por temas de seguridad del navegador
+app.use(express.json()) // Para que lea los json del body
+app.use(express.static('public')) // Servidor de archivos estáticos
 
 // Rutas de aplicacion
 app.use('/', appRouter);
