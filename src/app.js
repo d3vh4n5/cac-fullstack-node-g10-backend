@@ -5,6 +5,7 @@ const cors = require('cors')
 const appRouter = require('./routes/appRouter.cjs')
 const examplesRouter = require('./routes/examplesRouter')
 const contactMessageRouter = require('./routes/contactMessageRouter')
+// const upload = require('./middlewares/multer')
 
 // middlewares
 app.use(cors()) // Por temas de seguridad del navegador
@@ -13,6 +14,17 @@ app.use(express.static('public')) // Servidor de archivos estáticos
 
 // Rutas de aplicacion
 app.use('/', appRouter);
+// app.post('/upload', upload.single('archivo'), (req, res)=> {
+//     console.log({ info: req.file })
+//     const filepath = saveFile(req.file)
+//     res.json({ msg:'Archivo subido con éxito', filepath})
+// })
+
+// app.post('/uploads', upload.array('archivos', 10), (req, res)=> {
+//     console.log({ info: req.files })
+//     req.files.map(saveFile)
+//     res.json({ msg:'Archivos subidos con éxito'})
+// })
 
 
 // Rutas de API

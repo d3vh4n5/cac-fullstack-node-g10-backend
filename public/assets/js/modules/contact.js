@@ -1,4 +1,4 @@
-import { postContactMessage } from "../utils/formsSendingData.js"
+import { submitFormData } from "../utils/formsSendingData.js"
 
 const $form = document.querySelector('#contactForm')
 
@@ -11,7 +11,7 @@ $form.addEventListener('submit', async (event)=> {
         surname, 
         email, 
         subject, 
-        description, 
+        message, 
         type, 
         file, 
         captcha
@@ -20,19 +20,8 @@ $form.addEventListener('submit', async (event)=> {
     // Validacion de los inputs
 
     if (captcha.checked){
-
-        const newMessage = {
-            name: name.value,
-            surname: surname.value,
-            email: email.value,
-            subject: subject.value,
-            message: description.value,
-            file: file.value,
-            type: type.value,
-            read: false
-        }
-
-        await postContactMessage(newMessage)
+        
+        await submitFormData(event)
         
         event.target.reset()
     } else {
