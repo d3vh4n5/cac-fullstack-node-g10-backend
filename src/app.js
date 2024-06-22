@@ -5,6 +5,7 @@ const cors = require('cors')
 const appRouter = require('./routes/appRouter.cjs')
 const examplesRouter = require('./routes/examplesRouter')
 const contactMessageRouter = require('./routes/contactMessageRouter')
+const authRouter = require('./routes/authRouter')
 // const upload = require('./middlewares/multer')
 
 // middlewares
@@ -30,7 +31,7 @@ app.use('/', appRouter);
 // Rutas de API
 app.use('/api/v1/examples', examplesRouter)
 app.use('/api/v1/contact-messages', contactMessageRouter)
-
+app.use('/api/v1/auth', authRouter)
 
 
 // Middleware para manejar rutas no encontradas (404)

@@ -1,3 +1,4 @@
+const fs = require('node:fs')
 const ContactMessage = require('../models/ContactMessageModel')
 const { saveFile } = require('../utils/saveFile')
 
@@ -5,6 +6,7 @@ const getAllMessages = async (req, res) => {
     const messages = await ContactMessage.findAll()
     res.json( messages )
 }
+
 const getOneMessage = async (req, res) => {
     const { id } = req.params
     const message = await ContactMessage.findByPk(+id)
@@ -15,14 +17,18 @@ const getOneMessage = async (req, res) => {
         res.status(404).json( { error: "Mensaje no encontrado" } )
     }
 }
+
 const createNewMessage = async (req, res) => {
     const { body } = req
 
     console.log({ body, file: req.file })
 
-    const filePath = saveFile(req.file)
-    
-    body.file = filePath
+    if (req.file !== undefined){
+        const filePath = saveFile(req.file)
+        body.file = filePath
+    } else {
+        body.file = ""
+    }
     body.read = false
 
     try{
@@ -30,6 +36,7 @@ const createNewMessage = async (req, res) => {
         await message.save()
         res.json(message)
     } catch (e){
+        fs.unlinkSync(filePath);
         console.log("Hubo un error: ",e)
         res.status(500).json({ 
             error: "No se pudo realizar la inserción."
