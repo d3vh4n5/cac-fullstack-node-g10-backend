@@ -106,36 +106,7 @@ exports.deleteUser = async (req, res) => {
     }
 }
 
-// middleware que controla la información de logeo
-exports.authenticateUser = async (req, res, next) => {
-    try {
-        const user = await UserModel.findOne({
-            where: {
-                email: req.body.email
-            }
-        })
 
-        if (!user) {
-            return res.status(401).json({ 
-                error: 'Usuario o contraseña incorrectos' 
-            });
-        }
-
-        if ( await bcrypt.compare(req.body.password, user.password)) {
-            // res.send('Success')
-            console.log("Contraseña aprobada")
-            req.user = user.dataValues
-            next()
-            return
-        } else {
-            return res.status(401).json({ 
-                error: 'Usuario o contraseña incorrectos' 
-            });
-        }
-    } catch {
-        res.status(500).send()
-    }
-}
 
 exports.getTokens = async (req, res) => {
     try {
@@ -147,7 +118,7 @@ exports.getTokens = async (req, res) => {
         })
     
         const accessToken = generateAccessToken(user)
-        const refreshToken = jwt.sign(user, config.secret.refreshToken)
+        const refreshToken = jwt.sign(user, config.secret.refreshToken, { expiresIn: '7d' })
         
         const rfTokenExists = await RefreshTokenModel.findOne({
             where: {
@@ -196,15 +167,11 @@ exports.refreshToken = async (req, res) => {
     const refreshToken = req.body.token
     if (refreshToken == null) return res.sendStatus(401)
 
-    console.log(refreshToken)
-
     const refreshTokenExists = await RefreshTokenModel.findOne({
         where: {
             token: refreshToken
         }
     })
-
-    console.log(refreshTokenExists)
 
     if (!refreshTokenExists) return res.status(403).json({
         error: "Token inexistente"
@@ -214,7 +181,13 @@ exports.refreshToken = async (req, res) => {
         if (err) return res.status(403).json({
             error: "Token inválido"
         })
-        const accessToken = generateAccessToken(user)
+        const accessToken = generateAccessToken({ 
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            state: user.state
+        })
         res.json({ accessToken })
     })
 }
