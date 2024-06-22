@@ -1,5 +1,5 @@
 const fs = require('node:fs')
-const MedicalStudy = require('../models/medicalStudyModel')
+const MedicalStudy = require('../models/MedicalStudyModel')
 const { saveFile } = require('../utils/saveFile')
 
 const returnAllStudies = async (req, res) => {
