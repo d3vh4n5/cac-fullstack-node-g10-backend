@@ -1,5 +1,0 @@
-
-
-exports.loginCtrl = (req, res) => {
-    
-}

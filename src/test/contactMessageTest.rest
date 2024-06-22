@@ -17,7 +17,5 @@ Content-Type: application/json
     "email": "mail@spacex.com",
     "subject": "Hiring",
     "message": "Hola, quiero contratarlos para mi empresa Space X",
-    "type": 1,
-    "file": "Esto necesita una cambio //caperta/archivo",
-    "read": false
+    "type": 1
 }

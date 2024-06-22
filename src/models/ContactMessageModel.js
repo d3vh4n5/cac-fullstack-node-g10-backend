@@ -19,7 +19,7 @@ const ContactMessage = db.define("contact_messages", {
     file: { type: DataTypes.STRING },
     read: { 
         type: DataTypes.BOOLEAN,
-        default: false
+        defaultValue: false
     }
 })
 

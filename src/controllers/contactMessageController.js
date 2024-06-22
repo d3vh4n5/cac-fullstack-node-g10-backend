@@ -29,7 +29,6 @@ const createNewMessage = async (req, res) => {
     } else {
         body.file = ""
     }
-    body.read = false
 
     try{
         const message = new ContactMessage(body)

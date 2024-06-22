@@ -1,0 +1,27 @@
+POST http://localhost:5000/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "name": "Carlitos Testy",
+    "email": "ejemplo2@mail.com",
+    "password":  "1234"
+}
+
+###
+GET http://localhost:5000/api/v1/auth/users
+
+###
+GET http://localhost:5000/api/v1/auth/users/1
+
+###
+PUT http://localhost:5000/api/v1/auth/users/1
+Content-Type: application/json
+
+{
+    "name": "Mario Testy",
+    "email": "ejemplo@mail.com",
+    "password":  "1234"
+}
+
+###
+DELETE http://localhost:5000/api/v1/auth/users/1
