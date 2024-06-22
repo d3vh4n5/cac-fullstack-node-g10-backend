@@ -5,12 +5,16 @@ const {
     updateUser,
     getAllUsers,
     getOneUser,
-    deleteUser
+    deleteUser,
+    authenticateUser,
+    getTokens,
+    refreshToken
 } = require('../controllers/authController')
 
 router.post('/register', registerUser)
-router.post('/login', )
-router.post('/token', )
+router.post('/login', authenticateUser, getTokens)
+router.post('/refresh-token', refreshToken)
+router.delete('/refresh-token', )
 router.post('/forgotten-password', )
 
 router.get('/users', getAllUsers) // admin route
