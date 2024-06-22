@@ -19,6 +19,8 @@
 
 ### Español:
 
+Multer: https://www.youtube.com/watch?v=nRZE3It4B-E
+
 Fernando Herrera:
 sequelize: https://www.youtube.com/watch?v=TqpC6Ih05K8&t=1s
 

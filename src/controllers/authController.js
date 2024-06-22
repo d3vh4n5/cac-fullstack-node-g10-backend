@@ -1,4 +1,8 @@
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const config = require('../config/config.cjs')
 const UserModel = require('../models/UserModel')
+const RefreshTokenModel = require('../models/RefreshTokenModel')
 
 async function emailControl(req, res){
     const emailExists = await UserModel.findOne({
@@ -7,7 +11,7 @@ async function emailControl(req, res){
         }
     })
 
-    if (emailExists) return res.status(400).json({
+    if (emailExists) return res.status(409).json({
         error: "Ya existe un usuario con este email"
     })
 }
@@ -46,7 +50,13 @@ exports.getOneUser = async (req, res) => {
 exports.registerUser = async (req, res) => {
     // validacion de que llegue la informacion y esté correcta
     try {
-        emailControl(req, res)
+        await emailControl(req, res)
+
+        // const salt = await bcrypt.genSalt(10)
+        // const hashPassword = await bcrypt.hash(req.body.password, salt)
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
+        req.body.password = hashedPassword
 
         const newUser = await UserModel.create(req.body)
         res.status(201).json( newUser )
@@ -60,8 +70,8 @@ exports.registerUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
     // validacion de que llegue la informacion y esté correcta
     try {
-        userExists(req, res)
-        emailControl(req, res)
+        await userExists(req, res)
+        await emailControl(req, res)
 
         const updatedUser = await UserModel.update(req.body, {
             where: {
@@ -88,7 +98,7 @@ exports.deleteUser = async (req, res) => {
                 id: req.params.id
             }
         })
-        res.status(201).json({ updatedUser })
+        res.status(204).json({ updatedUser })
     } catch (error) {
         res.status(500).json({
             error: "No se pudo actualizar el usuario"
@@ -96,6 +106,88 @@ exports.deleteUser = async (req, res) => {
     }
 }
 
-exports.loginCtrl = async (req, res) => {
+
+
+exports.getTokens = async (req, res) => {
+    try {
+        
+        const { user } = req
     
+        if (!user) return res.status(500).json({
+            error: "Hubo un error, no se encuentra al usuario"
+        })
+    
+        const accessToken = generateAccessToken(user)
+        const refreshToken = jwt.sign(user, config.secret.refreshToken, { expiresIn: '7d' })
+        
+        const rfTokenExists = await RefreshTokenModel.findOne({
+            where: {
+                userId: user.id
+            }
+        })
+        
+        if (!rfTokenExists) {
+
+            const createRefreshToken = await RefreshTokenModel.create({
+                token: refreshToken,
+                userId: user.id
+            })
+            console.log(createRefreshToken)
+        } else {
+            await RefreshTokenModel.update({
+                token: refreshToken
+            }, {
+                where: {
+                    id: rfTokenExists.id
+                }
+            })
+        }
+
+        res.json({ 
+            user: {
+                name: user.name,
+                email: user.email
+            }, 
+            accessToken, 
+            refreshToken 
+    })
+    } catch (error) {
+        console.error('Error al generar tokens:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+}
+
+// esto va a la carpeta helpers o utils
+function generateAccessToken(user){
+    // jwt.sign( payloadObject, secretkey, expirationdate)
+    return jwt.sign(user, config.secret.accessToken, { expiresIn: '30s' })
+}
+
+exports.refreshToken = async (req, res) => {
+    const refreshToken = req.body.token
+    if (refreshToken == null) return res.sendStatus(401)
+
+    const refreshTokenExists = await RefreshTokenModel.findOne({
+        where: {
+            token: refreshToken
+        }
+    })
+
+    if (!refreshTokenExists) return res.status(403).json({
+        error: "Token inexistente"
+    })
+    
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        if (err) return res.status(403).json({
+            error: "Token inválido"
+        })
+        const accessToken = generateAccessToken({ 
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            state: user.state
+        })
+        res.json({ accessToken })
+    })
 }
