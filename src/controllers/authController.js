@@ -161,7 +161,9 @@ exports.getTokens = async (req, res) => {
         res.json({ 
             user: {
                 name: user.name,
-                email: user.email
+                email: user.email,
+                role: user.role,
+                state: user.state
             }, 
             accessToken, 
             refreshToken 
