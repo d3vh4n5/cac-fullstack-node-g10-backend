@@ -4,26 +4,6 @@ const config = require('../config/config.cjs')
 const UserModel = require('../models/UserModel')
 const RefreshTokenModel = require('../models/RefreshTokenModel')
 
-async function emailControl(req, res){
-    const emailExists = await UserModel.findOne({
-        where: {
-            email: req.body.email
-        }
-    })
-
-    if (emailExists) return res.status(409).json({
-        error: "Ya existe un usuario con este email"
-    })
-}
-
-async function userExists(req, res){
-    const usuario = await UserModel.findByPk( req.params.id )
-    if (!usuario) {
-        return res.status(404).json({
-            error: "No existe el usuario"
-        })
-    }
-}
 
 exports.getAllUsers = async (req, res) => {
     try {
@@ -41,6 +21,7 @@ exports.getOneUser = async (req, res) => {
         const user = await UserModel.findByPk(req.params.id)
         res.status(200).json(user)
     } catch (error) {
+        console.log(error)
         res.status(500).json({
             error: "No se pudo registrar el usuario"
         })
@@ -50,7 +31,19 @@ exports.getOneUser = async (req, res) => {
 exports.registerUser = async (req, res) => {
     // validacion de que llegue la informacion y esté correcta
     try {
-        await emailControl(req, res)
+        console.log("Punto d control 1")
+
+        const emailExists = await UserModel.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
+    
+        if (emailExists) return res.status(409).json({
+            error: "Ya existe un usuario con este email"
+        })
+
+        console.log("Punto d control 3")
 
         // const salt = await bcrypt.genSalt(10)
         // const hashPassword = await bcrypt.hash(req.body.password, salt)
@@ -70,8 +63,24 @@ exports.registerUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
     // validacion de que llegue la informacion y esté correcta
     try {
-        await userExists(req, res)
-        await emailControl(req, res)
+        // controlo que el usuario existe
+        const usuario = await UserModel.findByPk( req.params.id )
+        if (!usuario) {
+            return res.status(404).json({
+                error: "No existe el usuario"
+            })
+        }
+
+        // control del email
+        const emailExists = await UserModel.findOne({
+        where: {
+            email: req.body.email
+        }
+        })
+
+        if (emailExists) return res.status(409).json({
+            error: "Ya existe un usuario con este email"
+        })
 
         const updatedUser = await UserModel.update(req.body, {
             where: {
@@ -89,7 +98,13 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     // validacion de que llegue la informacion y esté correcta
     try {
-        userExists(req, res)
+        const usuario = await UserModel.findByPk( req.params.id )
+        if (!usuario) {
+            return res.status(404).json({
+                error: "No existe el usuario"
+            })
+        }
+
         // Hago un borrado Lógico
         const updatedUser = await UserModel.update({
             state: false
@@ -146,7 +161,9 @@ exports.getTokens = async (req, res) => {
         res.json({ 
             user: {
                 name: user.name,
-                email: user.email
+                email: user.email,
+                role: user.role,
+                state: user.state
             }, 
             accessToken, 
             refreshToken 
