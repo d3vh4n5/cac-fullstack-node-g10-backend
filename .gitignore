@@ -1,4 +1,6 @@
 uploads
+*.prod
+*.local
 
 # Logs
 logs
