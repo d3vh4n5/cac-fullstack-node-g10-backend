@@ -13,9 +13,9 @@
 
 const express = require('express')
 const app = express()
-require('dotenv').config()
+const config = require('./src/config/config')
 
-const PORT = process.env.PORT || 3030
+const PORT = config.app.port
 
 app.get('/', (req, res)=>{
     res.send("Aplicación funcionand")

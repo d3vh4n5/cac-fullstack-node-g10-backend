@@ -1,6 +1,6 @@
 const dotenv = require('dotenv')
 
-dotenv.config({ path: `.env` });
+dotenv.config();
 
 const config = { 
     env: process.env.NODE_ENV ?? "dev",
