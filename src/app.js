@@ -38,7 +38,7 @@ app.use('/', appRouter);
 app.use('/api/v1/examples', examplesRouter)
 app.use('/api/v1/contact-messages', contactMessageRouter)
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/medical-studies', medicalStudyRouter)
+// app.use('/api/v1/medical-studies', medicalStudyRouter)
 
 // Middleware para manejar rutas no encontradas (404)
 app.use((req, res, next) => {

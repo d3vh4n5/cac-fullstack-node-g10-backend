@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const config = require('../config/config.js')
+const config = require('../config/config.cjs')
 const UserModel = require('../models/UserModel')
 const RefreshTokenModel = require('../models/RefreshTokenModel')
 
