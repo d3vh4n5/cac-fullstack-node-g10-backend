@@ -3,11 +3,15 @@
 
     <ul>
         <!-- Sintaxis JavaScript -->
-        <% users.forEach(user => { %>
-    
-            <li><%= user.name %></li>
-    
-        <% }) %>
+        <% if(users){ %>
+            <% users.forEach(user => { %>
+                <!-- Dentro, sintaxis HTML -->
+                <li><%= user.name %></li>
+        
+            <% }) %>
+        <% } else {%>
+
+        <% } %>
     </ul>
      
 </section>
