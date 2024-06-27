@@ -1,7 +1,8 @@
 const { db } = require('../database/db')
 const { DataTypes } = require('sequelize')
+const UserModel = require('./UserModel')
 
-const MedicalStudy = db.define("medical_studies", {
+const MedicalStudyModel = db.define("medical_studies", {
     name: { type: DataTypes.STRING },
     description: { type: DataTypes.STRING },
     date: { type: DataTypes.DATE },
@@ -9,4 +10,14 @@ const MedicalStudy = db.define("medical_studies", {
     file: { type: DataTypes.STRING }
 })
 
-module.exports = MedicalStudy
+// Asociaciones
+UserModel.hasOne(MedicalStudyModel, {
+    // onDelete: 'RESTRICT',
+    // onUpdate: 'RESTRICT',
+})
+
+MedicalStudyModel.belongsTo(UserModel)
+
+// MedicalStudyModel.sync()
+
+module.exports = MedicalStudyModel

@@ -3,19 +3,37 @@ const MedicalStudy = require('../models/MedicalStudyModel')
 const { saveFile } = require('../utils/saveFile')
 
 const returnAllStudies = async (req, res) => {
-    const studies = await MedicalStudy.findAll()
-    res.json( studies )
+    try {
+        const studies = await MedicalStudy.findAll()
+        res.json( studies )
+
+    } catch {
+        res.status(500).json({
+            error: "Ocurrió un error en el servidor, comuniquese con el administrador"
+        })
+
+    }
+    
 }
 
 const returnOneStudy = async (req, res) => {
-    const { id } = req.params
-    const study = await MedicalStudy.findByPk(+id)
+    try {
+        const { id } = req.params
+        const study = await MedicalStudy.findByPk(+id)
 
-    if (study){
-        res.json(study)
-    } else {
-        res.status(404).json( { error: "Estudio médico no encontrado" } )
+        if (study){
+            res.json(study)
+            } else {
+            res.status(404).json( { error: "Estudio médico no encontrado" } )
+            }
+
+    } catch {
+        res.status(500).json({
+            error: "Ocurrió un error en el servidor, comuniquese con el administrador"
+        })
+
     }
+
 }
 
 const addNewStudy = async (req, res) => {
