@@ -24,10 +24,17 @@ router.put('/users/:id', updateUser) // admin route
 router.delete('/users/:id', deleteUser) // admin route
 
 // rutas para testeo
+router.get('/protected', authenticateToken, (req, res) => {
+    res.json({
+        msgServer: "Si estas aquí, estas validado y tu GET salió bien",
+        user: req.user
+    })
+})
 router.post('/protected', authenticateToken, (req, res) => {
     res.json({
-        msg: "Si estas aquí, estas validado y todo salió bien",
-        user: req.user
+        msgServer: "Si estas aquí, estas validado y tu POST salió bien",
+        payload: req.body,
+        user: req.user,
     })
 })
 

@@ -11,6 +11,11 @@ const authRouter = require('./routes/authRouter')
 // middlewares
 app.use(cors()) // Por temas de seguridad del navegador
 app.use(express.json()) // Para que lea los json del body
+// Middleware para registrar cada solicitud recibida
+app.use((req, res, next) => {
+    console.log('Solicitud recibida:', req.method, req.url);
+    next(); // Llama a next() para pasar el control al siguiente middleware
+});
 app.use(express.static('public')) // Servidor de archivos estáticos
 
 // Rutas de aplicacion

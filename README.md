@@ -5,8 +5,20 @@
 1. Clonan el proyecto en una nueva carpeta
 2. ejecutan: `npm i`
 3. Pasan a la rama develop: `git checkout develop`
-4. Correr el proyecto: `npm run dev`
-5. Si no configuraron la base de datos, comentan la línea 6 en el index.js
+4. Crear archivo .env en la raiz del proyecto con la siguiente estructura (Ver tamien .env.example):
+    ```bash
+    # Application
+    PORT= 5000
+
+    # Database
+    DB_NAME= healthup_dev
+
+    # jwt Keys
+    ACCESS_TOKEN_SECRET= secreto
+    REFRESH_TOKEN_SECRET= estoesotrosecreto
+    ```
+5. Correr el proyecto: `npm run dev`
+6. Si no configuraron la base de datos, comentan la línea 6 en el index.js
 
 
 

@@ -177,7 +177,7 @@ exports.getTokens = async (req, res) => {
 // esto va a la carpeta helpers o utils
 function generateAccessToken(user){
     // jwt.sign( payloadObject, secretkey, expirationdate)
-    return jwt.sign(user, config.secret.accessToken, { expiresIn: '30s' })
+    return jwt.sign(user, config.secret.accessToken, { expiresIn: '90d' })
 }
 
 exports.refreshToken = async (req, res) => {
