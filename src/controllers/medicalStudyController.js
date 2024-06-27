@@ -7,7 +7,7 @@ const returnAllStudies = async (req, res) => {
         const studies = await MedicalStudy.findAll()
         res.json( studies )
 
-    } catch {
+    } catch (error) {
         res.status(500).json({
             error: "Ocurrió un error en el servidor, comuniquese con el administrador"
         })
@@ -27,7 +27,7 @@ const returnOneStudy = async (req, res) => {
             res.status(404).json( { error: "Estudio médico no encontrado" } )
             }
 
-    } catch {
+    } catch (error) {
         res.status(500).json({
             error: "Ocurrió un error en el servidor, comuniquese con el administrador"
         })
