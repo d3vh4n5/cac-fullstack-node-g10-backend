@@ -18,6 +18,6 @@ UserModel.hasOne(MedicalStudyModel, {
 
 MedicalStudyModel.belongsTo(UserModel)
 
-// MedicalStudy.sync()
+// MedicalStudyModel.sync()
 
 module.exports = MedicalStudyModel
