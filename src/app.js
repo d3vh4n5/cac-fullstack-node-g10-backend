@@ -1,3 +1,4 @@
+const path = require('node:path');
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -17,7 +18,11 @@ app.use((req, res, next) => {
     console.log('Solicitud recibida:', req.method, req.url);
     next(); // Llama a next() para pasar el control al siguiente middleware
 });
-app.use(express.static('public')) // Servidor de archivos estáticos
+// Configurar el directorio de vistas y el motor de plantillas
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+// Servidor de archivos estáticos
+app.use(express.static(path.join(__dirname, 'public'))) 
 
 // Rutas de aplicacion
 app.use('/', appRouter);

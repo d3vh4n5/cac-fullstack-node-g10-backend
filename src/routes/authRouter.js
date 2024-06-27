@@ -18,10 +18,11 @@ router.post('/refresh-token', refreshToken)
 router.delete('/refresh-token', ) // Este deber ser la ruta de logout
 router.post('/forgotten-password', )
 
-router.get('/users', getAllUsers) // admin route
-router.get('/users/:id', getOneUser) // admin route
-router.put('/users/:id', updateUser) // admin route
-router.delete('/users/:id', deleteUser) // admin route
+// Rutas d eusuario protegidas
+router.get('/users', authenticateToken, getAllUsers) // admin route
+router.get('/users/:id', authenticateToken, getOneUser) // admin route
+router.put('/users/:id', authenticateToken, updateUser) // admin route
+router.delete('/users/:id', authenticateToken, deleteUser) // admin route
 
 // rutas para testeo
 router.get('/protected', authenticateToken, (req, res) => {
