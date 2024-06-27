@@ -1,0 +1,14 @@
+GET http://localhost:3000/api/v1/medical-studies 
+
+###
+POST http://localhost:3000/api/v1/medical-studies 
+Content-Type: application/json
+
+{
+    "name": "Ejemplo",
+    "description": "Esto es un nuevo ejemplo",
+    "date": "2024-06-26",
+    "type": 2,
+    "file": ""
+
+}
