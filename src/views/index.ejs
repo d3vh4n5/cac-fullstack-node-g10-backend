@@ -1,63 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthUp API</title>
 
-    <!-- Centered viewport --> 
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-    />
-</head>
-<body>
-    <header>
-        <h1>HealthUp API</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/docs">Docs</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2><%= title %></h2>
-            <hr>
-            <p>
-                Esta es la documentación de nuestra API, para saber más sobre nuestros endpoints y como funcionan haga click en <a href="">ESTE ENLACE</a>.
-            </p>
-            <p>
-                Frontend funcionando en <a href="https://healthupcac.netlify.app/">CLICK</a>
-            </p>
-            <pre>
-                <code>
-                    example
-                </code>
-            </pre>
-            <blockquote>
-                tercer ejemplo
-            </blockquote>
-            <p>
-                Si desea navegar y utilizar la aplicación final completa, la cual integra el front-end con el back-end, haga click en <a href="">ESTE ENLACE</a>
-            </p>
-            <article>
-                Aqui hay un articulo
-            </article>
-        </section>
-    </main>
-    <footer>
-        <hr>
-        <div>
-            <small>
-                Proyecto desarrollado por el <a href="">Grupo 10.</a>
-            </small>
-        </div>
-    </footer>
-</body>
-</html>
+<section>
+    <h2><%= title %></h2>
+    <hr>
+    <p>
+        Esta es la documentación de nuestra API.
+    </p>
+    <article>
+        <h5>Información relevante del estado de la aplicación:</h5>
+        <p>
+            <b>DB Status:</b> 
+            <% if (dbStatus === 'DB conectada correctamente') {%>
+                <span class="ok"><%= dbStatus %></span>
+            <% } else { %>
+              <span class="error"><%= dbStatus %></span>
+            <% } %>
+        </p>
+    </article>
+    <p>
+        Frontend funcionando en <a href="https://healthupcac.netlify.app/" target="_blank"><%= frontendURL %></a>
+    </p>
+    <pre>
+        <code>
+            example
+        </code>
+    </pre>
+    <blockquote>
+        tercer ejemplo
+    </blockquote>
+    <p>
+        Si desea navegar y utilizar la aplicación final completa, la cual integra el front-end con el back-end, haga click en <a href="">ESTE ENLACE</a>
+    </p>
+    <article>
+        Aqui hay un articulo
+    </article>
+</section>

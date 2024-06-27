@@ -42,10 +42,13 @@ const dbConnTest = async () => {
         // await db.sync({ force: true })
         // await db.sync({ alter: true })
         console.log('Database & tables created!');
-
+        return "DB conectada correctamente";
     } catch (error) {
-        console.log('Error al conectar la base de datos: ', error)
+        console.log('Error al conectar la base de datos: ', error.message)
+        return error.message
     }
 }
+
+
 
 module.exports = { db, dbConnTest }

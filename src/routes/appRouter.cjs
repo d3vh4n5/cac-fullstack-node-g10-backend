@@ -1,12 +1,13 @@
 const { Router } = require('express')
 const router = Router()
+const {
+    indexView,
+    usersView,
+    docsView
+} = require('../controllers/viewsController')
 
-router.get('/', (req, res)=>{
-    const context = {
-        title: "Bienvenidos a nuestra API",
-    }
-
-    res.render('index', context);
-})
+router.get('/', indexView)
+router.get('/users', usersView)
+router.get('/docs', docsView)
 
 module.exports = router
