@@ -11,7 +11,7 @@ exports.getAllUsers = async (req, res) => {
         res.status(200).json(users)
     } catch (error) {
         res.status(500).json({
-            error: "No se pudo registrar el usuario"
+            error: "Error al obtener los usuarios"
         })
     }
 }

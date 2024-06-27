@@ -3,19 +3,31 @@ const ContactMessage = require('../models/ContactMessageModel')
 const { saveFile } = require('../utils/saveFile')
 
 const getAllMessages = async (req, res) => {
-    const messages = await ContactMessage.findAll()
-    res.json( messages )
+    try {
+        const messages = await ContactMessage.findAll()
+        res.json( messages )
+    } catch (error) {
+        res.status(500).json({
+            error: "Ocurrió un error en el servidor, comuniquese con el administrador"
+        })
+    }
 }
 
 const getOneMessage = async (req, res) => {
-    const { id } = req.params
-    const message = await ContactMessage.findByPk(+id)
+    try {
+        const { id } = req.params
+        const message = await ContactMessage.findByPk(+id)
 
-    if (message){
-        res.json(message)
-    } else {
-        res.status(404).json( { error: "Mensaje no encontrado" } )
-    }
+        if (message){
+            res.json(message)
+        } else {
+            res.status(404).json( { error: "Mensaje no encontrado" } )
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: "Ocurrió un error en el servidor, comuniquese con el administrador"
+        })
+    }  
 }
 
 const createNewMessage = async (req, res) => {
