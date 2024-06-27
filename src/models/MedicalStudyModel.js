@@ -11,7 +11,7 @@ const MedicalStudyModel = db.define("medical_studies", {
 })
 
 // Asociaciones
-UserModel.hasOne(MedicalStudyModel, {
+UserModel.hasMany(MedicalStudyModel, {
     // onDelete: 'RESTRICT',
     // onUpdate: 'RESTRICT',
 })
