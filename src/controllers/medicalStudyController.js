@@ -4,7 +4,12 @@ const { saveFile } = require('../utils/saveFile')
 
 const returnAllStudies = async (req, res) => {
     try {
-        const studies = await MedicalStudy.findAll()
+        const studies = await MedicalStudy.findAll({
+            where: {
+                userId: req.user.id
+            }
+
+        })
         res.json( studies )
 
     } catch (error) {
@@ -19,7 +24,11 @@ const returnAllStudies = async (req, res) => {
 const returnOneStudy = async (req, res) => {
     try {
         const { id } = req.params
-        const study = await MedicalStudy.findByPk(+id)
+        const study = await MedicalStudy.findByPk(+id , {
+            where: {
+                userId: req.user.id
+            }
+        })
 
         if (study){
             res.json(study)
@@ -38,7 +47,7 @@ const returnOneStudy = async (req, res) => {
 
 const addNewStudy = async (req, res) => {
     const { body } = req
-
+    body.userId = req.user.id
     console.log({ body, file: req.file })
 
     if (req.file !== undefined){
