@@ -25,3 +25,7 @@ exports.usersView = async (req, res) => {
         res.send("<h1>Hubo agún problema</h1>")
     }
 }
+
+exports.restClient = (req, res)=>{
+    res.render('pages/restClient')
+}

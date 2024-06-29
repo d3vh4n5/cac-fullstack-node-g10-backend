@@ -9,11 +9,26 @@ Content-Type: application/json
     "password":  "1234"
 }
 
+### Logearse
+POST http://localhost:5000/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "ejemplo2@mail.com",
+    "password": "1234"
+}
+
+
+# XXXXXXXXXXXXX RUTAS PROTEGIDAS XXXXXXXXXXXXXX
+
+
 ### Obtener todos los usuarios
 GET http://localhost:5000/api/v1/auth/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsIm5hbWUiOiJDYXJsaXRvcyBUZXN0eSIsImVtYWlsIjoiZWplbXBsbzJAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqcGpJb1UwOXFvNDlOUEwvLnNnclNPZUVOdzJUOGQzT0dIanloMmNMSWpwUS5xb3NYVU95NiIsInN0YXRlIjp0cnVlLCJyb2xlIjoidXNlciIsImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjhUMDA6MzE6NTAuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjhUMDA6MzE6NTAuMDAwWiIsImlhdCI6MTcxOTUzNzU0NywiZXhwIjoxNzI3MzEzNTQ3fQ.dyIMCC0XRl-SOb1BuqhAF1hOKaqLpRegxTRPf4zLkWI
 
 ### obtener 1 usuario
-GET http://localhost:5000/api/v1/auth/users/1
+GET http://localhost:5000/api/v1/auth/users/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsIm5hbWUiOiJDYXJsaXRvcyBUZXN0eSIsImVtYWlsIjoiZWplbXBsbzJAbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqcGpJb1UwOXFvNDlOUEwvLnNnclNPZUVOdzJUOGQzT0dIanloMmNMSWpwUS5xb3NYVU95NiIsInN0YXRlIjp0cnVlLCJyb2xlIjoidXNlciIsImNyZWF0ZWRBdCI6IjIwMjQtMDYtMjhUMDA6MzE6NTAuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMjhUMDA6MzE6NTAuMDAwWiIsImlhdCI6MTcxOTUzNzU0NywiZXhwIjoxNzI3MzEzNTQ3fQ.dyIMCC0XRl-SOb1BuqhAF1hOKaqLpRegxTRPf4zLkWI
 
 ### Modificar 1 usuario
 PUT http://localhost:5000/api/v1/auth/users/1
@@ -28,14 +43,6 @@ Content-Type: application/json
 ### Borrar 1 usuario
 DELETE http://localhost:5000/api/v1/auth/users/1
 
-### Logearse
-POST http://localhost:5000/api/v1/auth/login
-Content-Type: application/json
-
-{
-    "email": "ejemplo2@mail.com",
-    "password": "1234"
-}
 
 ### Refrescar el tocken
 POST http://localhost:5000/api/v1/auth/refresh-token
