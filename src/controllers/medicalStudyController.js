@@ -63,13 +63,45 @@ const addNewStudy = async (req, res) => {
         await study.save()
         res.json(study)
     } catch (e){
-        fs.unlinkSync(filePath);
+        if (body.file !== ""){
+            fs.unlinkSync(body.file);
+        }
         console.log("Hubo un error: ",e)
         res.status(500).json({ 
-            error: "No se pudo subir el estudio médico."
+            error: "No se pudo realizar la inserción."
         })
     }
 }
 
+const updateStudy = async (req, res) => {
+    try {
+        await MedicalStudy.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+    } catch (error) {
+        console.log("Hubo un error: ",e)
+        res.status(500).json({ 
+            error: "Hubo un error al actualizar."
+        })
+    }
+}
 
-module.exports = { returnAllStudies, returnOneStudy, addNewStudy }
+const deleteStudy = async (req, res) => {
+    try {
+        const study = await MedicalStudy.destroy({where :{id:req.params.id}})
+        res.json({"message": "Estudio eliminado con éxito"})
+    } catch (error) {
+        if (body.file !== ""){
+            fs.unlinkSync(body.file);
+        }
+        console.log("Hubo un error: ",e)
+        res.status(500).json({ 
+            error: "No se pudo borrar el estudio."
+        })
+
+    }
+}
+
+module.exports = { returnAllStudies, returnOneStudy, addNewStudy, updateStudy, deleteStudy }
