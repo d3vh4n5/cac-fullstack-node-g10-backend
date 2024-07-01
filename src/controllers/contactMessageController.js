@@ -49,10 +49,12 @@ const createNewMessage = async (req, res) => {
         if (captchaValid){
             const message = new ContactMessage(body)
             await message.save()
-            res.json(message)
+            res.status(201).json(message)
             return
         } else {
-            throw new Error("Captcha inválido")
+            res.status(422).json({ // 422 Unprocessable Entity
+                error: "Captcha inválido"
+            })
         }
     } catch (e){
         if (body.file !== ""){
