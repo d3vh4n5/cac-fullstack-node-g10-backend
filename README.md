@@ -60,7 +60,8 @@ jwt: https://www.youtube.com/watch?v=gkzLAVh8tGM
 * 500 Internal Server Error: Cualquier error del servidor, por ejemplo, problemas con la base de datos.
 * 503 Service Unavailable: El servidor no está disponible, por ejemplo, cuando el servidor está en mantenimiento o sobrecargado.
 
-# Redirecciones:
+### Redirecciones:
+
 * 301 y 308: Para redirecciones permanentes.
 * 302 y 307: Para redirecciones temporales.
 * 303: Para redirigir después de operaciones que no deben ser repetidas con el mismo método (como POST).
