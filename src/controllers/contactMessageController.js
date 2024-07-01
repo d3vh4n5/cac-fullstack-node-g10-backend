@@ -50,6 +50,7 @@ const createNewMessage = async (req, res) => {
             const message = new ContactMessage(body)
             await message.save()
             res.json(message)
+            return
         } else {
             throw new Error("Captcha inválido")
         }
@@ -66,17 +67,63 @@ const createNewMessage = async (req, res) => {
 
 const updateMessage = async (req, res) => {
     try {
-        await ContactMessage.update(req.body, {
+        const { id } = req.params
+        const msg = await ContactMessage.findByPk(+id)
+
+        // primero controlo que exista el mensaje
+        if (!msg) return res.status(404).json({
+            error: "No existe el mensaje"
+        })
+
+        const updatedMsg = await ContactMessage.update(req.body, {
             where: {
                 id: req.params.id
             }
         })
+
+        res.status(200).json({ 
+            msg: "Recurso actualizado con éxito",
+            updatedMsg,
+            data: req.body
+        })
     } catch (error) {
-        console.log("Hubo un error: ",e)
+        console.log("Hubo un error: ",error)
         res.status(500).json({ 
             error: "Hubo un error al actualizar."
         })
     }
 }
 
-module.exports = { getAllMessages, getOneMessage, createNewMessage, updateMessage }
+const deleteMessage = async (req, res) => {
+    try {
+        const { id } = req.params
+        const msg = await ContactMessage.findByPk(+id)
+
+        // primero controlo que exista el mensaje
+        if (!msg) return res.status(404).json({
+            error: "No existe el mensaje"
+        })
+
+        // si existe, además puedo obtener la url del archivo a borrar
+        const filePath = msg.file
+        if (filePath !== '') fs.unlinkSync(filePath)// borro si hay url
+        // Ahora borro el registro en la db
+        const deletedMsg = await ContactMessage.destroy({where: { id: id }})
+        
+        
+        res.status(200).json({ deletedMsg })
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            error: "No se pudo realizar la operación de eliminación"
+        })
+    }
+}
+
+module.exports = { 
+    getAllMessages, 
+    getOneMessage, 
+    createNewMessage, 
+    updateMessage,
+    deleteMessage,
+ }

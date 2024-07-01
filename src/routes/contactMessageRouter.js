@@ -3,7 +3,10 @@ const router = Router()
 const { 
     getAllMessages, 
     getOneMessage, 
-    createNewMessage} = require('../controllers/contactMessageController')
+    createNewMessage,
+    updateMessage,
+    deleteMessage
+} = require('../controllers/contactMessageController')
 const upload = require('../middlewares/multer')
 
 
@@ -11,5 +14,7 @@ const upload = require('../middlewares/multer')
 router.get('/', getAllMessages)
 router.get('/:id', getOneMessage)
 router.post('/', upload.single('file'), createNewMessage)
+router.put('/:id', updateMessage)
+router.delete('/:id', deleteMessage)
 
 module.exports = router

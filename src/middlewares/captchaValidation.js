@@ -21,15 +21,15 @@ exports.captchaValidation = async (token) => {
 
 
 
-exports.captchaValidation0 = async (req, res, next) => {
-    const token = req.body['g-recaptcha-response']
+// exports.captchaValidation0 = async (req, res, next) => {
+//     const token = req.body['g-recaptcha-response']
 
-    if (token !== undefined){
-        const resp = await fetch(CAPTCHA_URL + token)
-        const data = await resp.json()
-        console.log({ token })
-        console.log(data)
-    } else {
-        console.error("No se encuentra el token")
-    }
-}
+//     if (token !== undefined){
+//         const resp = await fetch(CAPTCHA_URL + token)
+//         const data = await resp.json()
+//         console.log({ token })
+//         console.log(data)
+//     } else {
+//         console.error("No se encuentra el token")
+//     }
+// }
