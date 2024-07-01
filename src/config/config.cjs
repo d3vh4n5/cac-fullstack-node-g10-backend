@@ -7,7 +7,8 @@ const config = {
     env: process.env.NODE_ENV ?? "dev",
     secret: {
         accessToken: process.env.ACCESS_TOKEN_SECRET,
-        refreshToken: process.env.REFRESH_TOKEN_SECRET
+        refreshToken: process.env.REFRESH_TOKEN_SECRET,
+        captchaSecretKey: process.env.CAPTCHA_SECRET_KEY,
     },
     app: {
         port: process.env.PORT ?? 3000 ,

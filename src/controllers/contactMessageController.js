@@ -1,6 +1,7 @@
 const fs = require('node:fs')
 const ContactMessage = require('../models/ContactMessageModel')
 const { saveFile } = require('../utils/saveFile')
+const { captchaValidation } = require('../middlewares/captchaValidation.js')
 
 const getAllMessages = async (req, res) => {
     try {
@@ -32,6 +33,7 @@ const getOneMessage = async (req, res) => {
 
 const createNewMessage = async (req, res) => {
     const { body } = req
+    const token = body['g-recaptcha-response']
 
     console.log({ body, file: req.file })
 
@@ -43,11 +45,18 @@ const createNewMessage = async (req, res) => {
     }
 
     try{
-        const message = new ContactMessage(body)
-        await message.save()
-        res.json(message)
+        const captchaValid = await captchaValidation(token)
+        if (captchaValid){
+            const message = new ContactMessage(body)
+            await message.save()
+            res.json(message)
+        } else {
+            throw new Error("Captcha inválido")
+        }
     } catch (e){
-        fs.unlinkSync(filePath);
+        if (body.file !== ""){
+            fs.unlinkSync(body.file);
+        }
         console.log("Hubo un error: ",e)
         res.status(500).json({ 
             error: "No se pudo realizar la inserción."
