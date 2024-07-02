@@ -5,23 +5,54 @@ Content-Type: application/json
 {
     "email": "camival00@gmail.com",
     "password":  "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+    //"password": "1234"
 }
 
 ###
 
 GET http://localhost:5000/api/v1/medical-studies 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk5MzgyMDcsImV4cCI6MTcyNzcxNDIwN30.6-yTfCR7mk18deSIRF_JArnRplSbYcHrkMjHCG5hwI8
+
+###
+
+GET http://localhost:5000/api/v1/medical-studies/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk5MzgyMDcsImV4cCI6MTcyNzcxNDIwN30.6-yTfCR7mk18deSIRF_JArnRplSbYcHrkMjHCG5hwI8
+
+###
+
+GET http://localhost:5000/api/v1/medical-studies/13
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk5MzgyMDcsImV4cCI6MTcyNzcxNDIwN30.6-yTfCR7mk18deSIRF_JArnRplSbYcHrkMjHCG5hwI8
 
 ###
 POST http://localhost:5000/api/v1/medical-studies 
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk1MzU1MzksImV4cCI6MTcyNzMxMTUzOX0.O5bP487FonKycZWgHtaemHxiFJ2koye7Uhrtt2sL9xQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk5MzgyMDcsImV4cCI6MTcyNzcxNDIwN30.6-yTfCR7mk18deSIRF_JArnRplSbYcHrkMjHCG5hwI8
 
 {
-    "name": "Ejemplo3",
-    "description": "Esto es un nuevo ejemplo3",
-    "date": "2024-06-26",
-    "type": 3,
+    "name": "Estudio pulmones",
+    "description": "Radiografía de pulmones",
+    "date": "2024-07-02",
+    "type": 6,
     "file": ""
 
 }
+
+###
+
+PUT http://localhost:5000/api/v1/medical-studies/6
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk5MzgyMDcsImV4cCI6MTcyNzcxNDIwN30.6-yTfCR7mk18deSIRF_JArnRplSbYcHrkMjHCG5hwI8
+
+{
+    "name": "Estudio rodilla",
+    "description": "Radiografía de rodilla derecha",
+    "date": "2024-07-02",
+    "type": 4,
+    "file": ""
+}
+
+###
+
+DELETE http://localhost:5000/api/v1/medical-studies/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk5MzgyMDcsImV4cCI6MTcyNzcxNDIwN30.6-yTfCR7mk18deSIRF_JArnRplSbYcHrkMjHCG5hwI8
 
