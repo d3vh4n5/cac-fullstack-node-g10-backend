@@ -4,7 +4,8 @@ Content-Type: application/json
 
 {
     "email": "camival00@gmail.com",
-    "password":  "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+    //"password":  "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+    "password": "1234"
 }
 
 ###
@@ -24,4 +25,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6I
     "file": ""
 
 }
+
+###
+
+PUT http://localhost:5000/api/v1/medical-studies
+Content-Type: application/json
+
+{
+    "name": "Estudio rodilla",
+    "description": "Esto es un nuevo ejemplo3",
+    "date": "2024-06-26",
+    "type": 3,
+    "file": ""
+}
+
+###
+
+DELETE http://localhost:5000/api/v1/medical-studies
 

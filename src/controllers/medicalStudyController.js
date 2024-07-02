@@ -11,10 +11,9 @@ const returnAllStudies = async (req, res) => {
 
         })
         res.json( studies )
-
     } catch (error) {
         res.status(500).json({
-            error: "Ocurrió un error en el servidor, comuniquese con el administrador"
+            error: "Ocurrió un error en el servidor, intentelo nuevamente"
         })
 
     }
@@ -38,7 +37,7 @@ const returnOneStudy = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({
-            error: "Ocurrió un error en el servidor, comuniquese con el administrador"
+            error: "Ocurrió un error en el servidor, intentelo nuevamente"
         })
 
     }
@@ -75,13 +74,27 @@ const addNewStudy = async (req, res) => {
 
 const updateStudy = async (req, res) => {
     try {
-        await MedicalStudy.update(req.body, {
+        const { id } = req.params
+        const study = await MedicalStudy.findByPk(+id)
+
+        if (!study) return res.status(404).json({
+            error: "No existe el estudio médico"
+        })
+       
+        const updatedStudy = await MedicalStudy.update(req.body, {
             where: {
                 id: req.params.id
             }
         })
+
+        res.status(200).json({ 
+            msg: "Estudio médico actualizado con éxito",
+            updatedStudy,
+            data: req.body
+        })
+
     } catch (error) {
-        console.log("Hubo un error: ",e)
+        console.log("Hubo un error: ",error)
         res.status(500).json({ 
             error: "Hubo un error al actualizar."
         })
@@ -90,17 +103,26 @@ const updateStudy = async (req, res) => {
 
 const deleteStudy = async (req, res) => {
     try {
-        const study = await MedicalStudy.destroy({where :{id:req.params.id}})
-        res.json({"message": "Estudio eliminado con éxito"})
-    } catch (error) {
-        if (body.file !== ""){
-            fs.unlinkSync(body.file);
-        }
-        console.log("Hubo un error: ",e)
-        res.status(500).json({ 
-            error: "No se pudo borrar el estudio."
+        const { id } = req.params
+        const study = await MedicalStudy.findByPk(+id)
+
+        if (!study) return res.status(404).json({
+            error: "No existe el estudio"
         })
 
+        const filePath = study.file
+        if (filePath !== '') fs.unlinkSync(filePath)
+
+        const deletedStudy = await MedicalStudy.destroy({where: { id: id }})
+        
+        res.status(200).json({ deletedStudy })
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            error: "No se pudo eliminar el estudio"
+        })
+    
     }
 }
 
