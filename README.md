@@ -12,6 +12,9 @@ cp .env.example .env
 ```
 * ⚠️ Las claves de jwt pueden poner cualquier cosa para probar. La del captcha si tendría que ser real, pero de ultima le ponen cualquier cosa y como solo se usa ene l formulario de contacto, simplemente no usen ese endpoint.
 
+* En cuanto a la base de datos, estamos haciendo una prueba de conexión
+al momento de iniciar la aplicación, esta se hace automaticamente y ejecuta la funcion "sync()" de sequelize, la cual crea automaticamente las tablas en la base de datos, tal cual están diseñadas en el modelo. Por ello es que no brindamos el código SQL de las mismas.
+
 3. Correr proyecto:
 ```bash
 npm run dev

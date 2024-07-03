@@ -74,7 +74,6 @@
                     </li> 
                     <li><b>PUT "/id"</b></li>
                     <li><b>DELETE "/id"</b></li>
-                    <hr>
                 </ul>
             </li>
 
@@ -88,7 +87,29 @@
                     <li><b>GET ""</b></li>
                     <li><b>GET "/id"</b></li>
                     <li><b>POST ""</b></li>
+                    <li><b>PUT "/id"</b></li>
+                    <li><b>DELETE "/id"</b></li>
                 </ul>
+            </li>
+            <li>
+                "/api/v1/clinic-histories"
+                <span class="error">
+                    Rutas de Usuario personales, protegidas por JWT e 
+                    identificación personal del usuario.
+                </span>
+                <ul>
+                    <li><b>GET ""</b></li>
+                    <li><b>GET "/user-clinic-history"</b></li>
+                    <li><b>GET "/id"</b></li>
+                    <li><b>POST ""</b></li>
+                    <li><b>PUT "/id"</b></li>
+                </ul>
+                <blockquote>
+                    En este endpoint diferenciamos los get totales y por id, 
+                    que serían los que usaría por ejemplo un administrador, 
+                    del endpoint que usaría cada usario para obtener unicamente
+                    su propia historia clínica.
+                </blockquote>
             </li>
         </ul>
     </article>

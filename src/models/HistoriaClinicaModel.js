@@ -4,24 +4,43 @@ const UserModel = require('./UserModel')
 
 // Historia clinica resumida
 const HistoriaClinicaModel = db.define("historia_clinica", {
-    name: { type: DataTypes.STRING },
-    //apellido: { type: DataTypes.STRING },    
-    fecha_nacimiento: { type: DataTypes.DATE },
-    sexo: { type: DataTypes.STRING },
-    estado_civil: { type: DataTypes.STRING },
-    peso: { type: DataTypes.INTEGER },
-    altura: { type: DataTypes.INTEGER },
-    grupo_sanguineo: { type: DataTypes.STRING },
-    hipertension: { type: DataTypes.BOOLEAN },
-    diabetes: { type: DataTypes.BOOLEAN },
-    asma: { type: DataTypes.BOOLEAN },
-    alergias: { type: DataTypes.BOOLEAN },
-    insuf_cardiaca: { type: DataTypes.BOOLEAN },
-    tabaco: { type: DataTypes.BOOLEAN },
-    alcohol: { type: DataTypes.BOOLEAN },
-    marihuana: { type: DataTypes.BOOLEAN },
-    cocaina: { type: DataTypes.BOOLEAN },
-    otras_drogas: { type: DataTypes.BOOLEAN },
+    name: { type: DataTypes.STRING },  
+    dateOfBirth: { type: DataTypes.DATE },
+    gender: { type: DataTypes.STRING },
+    maritalStatus: { type: DataTypes.STRING },
+    weight: { type: DataTypes.INTEGER },
+    height: { type: DataTypes.INTEGER },
+    bloodType: { type: DataTypes.STRING },
+    hypertension: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    diabetes: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    asthma: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    allergies: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    heartFailure: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    tobacco: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    alcohol: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    dope: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    cocaine: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
+    otherDrugs: { type: DataTypes.BOOLEAN, 
+        defaultValue: false
+    },
     
 })
 
