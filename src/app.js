@@ -9,6 +9,7 @@ const examplesRouter = require('./routes/examplesRouter')
 const contactMessageRouter = require('./routes/contactMessageRouter')
 const authRouter = require('./routes/authRouter')
 const medicalStudyRouter = require('./routes/medicalStudyRouter')
+const clinicHistoryRouter = require('./routes/clinicHistoryRouter')
 // const upload = require('./middlewares/multer')
 
 // middlewares
@@ -48,6 +49,7 @@ app.use('/api/v1/examples', examplesRouter)
 app.use('/api/v1/contact-messages', contactMessageRouter)
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/medical-studies', medicalStudyRouter)
+app.use('/api/v1/clinic-histories', clinicHistoryRouter)
 
 // Middleware para manejar rutas no encontradas (404)
 app.use((req, res, next) => {

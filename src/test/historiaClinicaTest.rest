@@ -9,20 +9,33 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5000/api/v1/medical-studies 
+GET http://localhost:5000/api/v1/clinic-histories/user-clinic-history
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNhcmxpdG9zIFRlc3R5IiwiZW1haWwiOiJlamVtcGxvMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGdFeE10OFFKTzk5dmZLSUdaZ09ZOXVmTDFiZHdvMjgxeTZQRUVXMy5xSE5DQTVsa2lFWGsuIiwic3RhdGUiOnRydWUsInJvbGUiOiJ1c2VyIiwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwiaWF0IjoxNzE5OTY4NDQ2LCJleHAiOjE3Mjc3NDQ0NDZ9.CAfzGMPHDu2iXuEez_EM_4PJxaxG0m1d9vCI1XDCfPk
+
 
 ###
-POST http://localhost:5000/api/v1/medical-studies 
+GET http://localhost:5000/api/v1/clinic-histories/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk1MzU1MzksImV4cCI6MTcyNzMxMTUzOX0.O5bP487FonKycZWgHtaemHxiFJ2koye7Uhrtt2sL9xQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNhcmxpdG9zIFRlc3R5IiwiZW1haWwiOiJlamVtcGxvMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGdFeE10OFFKTzk5dmZLSUdaZ09ZOXVmTDFiZHdvMjgxeTZQRUVXMy5xSE5DQTVsa2lFWGsuIiwic3RhdGUiOnRydWUsInJvbGUiOiJ1c2VyIiwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwiaWF0IjoxNzE5OTY4NDQ2LCJleHAiOjE3Mjc3NDQ0NDZ9.CAfzGMPHDu2iXuEez_EM_4PJxaxG0m1d9vCI1XDCfPk
+###
+GET http://localhost:5000/api/v1/clinic-histories/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNhcmxpdG9zIFRlc3R5IiwiZW1haWwiOiJlamVtcGxvMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGdFeE10OFFKTzk5dmZLSUdaZ09ZOXVmTDFiZHdvMjgxeTZQRUVXMy5xSE5DQTVsa2lFWGsuIiwic3RhdGUiOnRydWUsInJvbGUiOiJ1c2VyIiwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwiaWF0IjoxNzE5OTY4NDQ2LCJleHAiOjE3Mjc3NDQ0NDZ9.CAfzGMPHDu2iXuEez_EM_4PJxaxG0m1d9vCI1XDCfPk
+
+
+###
+POST http://localhost:5000/api/v1/clinic-histories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkNhcmxpdG9zIFRlc3R5IiwiZW1haWwiOiJlamVtcGxvMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGdFeE10OFFKTzk5dmZLSUdaZ09ZOXVmTDFiZHdvMjgxeTZQRUVXMy5xSE5DQTVsa2lFWGsuIiwic3RhdGUiOnRydWUsInJvbGUiOiJ1c2VyIiwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wMlQxNzoxNzowNC4wMDBaIiwiaWF0IjoxNzE5OTY4NDQ2LCJleHAiOjE3Mjc3NDQ0NDZ9.CAfzGMPHDu2iXuEez_EM_4PJxaxG0m1d9vCI1XDCfPk
 
 {
-    "name": "Juan Basgall",
+    "name": "xxxx testy",
     "fecha_nacimiento": "2000-01-01",
     "sexo": "Masculino",
     "estado_civil": "Casado/a",
     "peso": 75,
-    "altura": 1.75,
+    "altura": 175,
     "grupo_sanguineo": "A RH+",
     "hipertension": 1,
     "diabetes": 0,
@@ -33,11 +46,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6I
     "alcohol": 1,
     "marihuana": 0,
     "cocaina": 1,
-    "otras_drogas": 0,
-    
-
-    
-
-
+    "otras_drogas": 0
 }
 

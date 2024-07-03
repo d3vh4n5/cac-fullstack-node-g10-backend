@@ -5,11 +5,16 @@ const { authenticateToken } = require('../middlewares/authToken')
 const { 
     returnAllHistorias, 
     returnOneHistoria, 
-    addNewHistoria} = require('../controllers/historiaClinicaController')
-const upload = require('../middlewares/multer')
+    addNewHistoria,
+    returnUserHistory
+} = require('../controllers/historiaClinicaController')
+
 
 router.get('/', authenticateToken, returnAllHistorias)
+router.get('/user-clinic-history', authenticateToken, returnUserHistory)
 router.get('/:id', authenticateToken, returnOneHistoria)
-router.post('/', authenticateToken, upload.single('file'), addNewHistoria)
+router.post('/', authenticateToken, addNewHistoria)
+// router.put('/', authenticateToken, )
+
 
 module.exports = router
