@@ -1,0 +1,43 @@
+### Logearse
+POST http://localhost:5000/api/v1/auth/login
+Content-Type: application/json
+
+{
+
+
+}
+
+###
+
+GET http://localhost:5000/api/v1/medical-studies 
+
+###
+POST http://localhost:5000/api/v1/medical-studies 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkNhbWlsYSBWYWxkZXJyYW1hIiwiZW1haWwiOiJjYW1pdmFsMDBAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFdPcnRxcm5KQ204M3JoQmZCdXU2ZW13UW9SYVhNRVh0NW40bWc5c3A2UG9zcWMuV1BuM0MiLCJzdGF0ZSI6dHJ1ZSwicm9sZSI6InVzZXIiLCJjcmVhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA2LTI4VDAwOjI5OjExLjAwMFoiLCJpYXQiOjE3MTk1MzU1MzksImV4cCI6MTcyNzMxMTUzOX0.O5bP487FonKycZWgHtaemHxiFJ2koye7Uhrtt2sL9xQ
+
+{
+    "name": "Juan Basgall",
+    "fecha_nacimiento": "2000-01-01",
+    "sexo": "Masculino",
+    "estado_civil": "Casado/a",
+    "peso": 75,
+    "altura": 1.75,
+    "grupo_sanguineo": "A RH+",
+    "hipertension": 1,
+    "diabetes": 0,
+    "asma": 1,
+    "alergias": 0,
+    "insuf_cardiaca": 1,
+    "tabaco": 0,
+    "alcohol": 1,
+    "marihuana": 0,
+    "cocaina": 1,
+    "otras_drogas": 0,
+    
+
+    
+
+
+}
+
