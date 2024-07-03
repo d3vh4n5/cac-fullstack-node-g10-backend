@@ -2,12 +2,20 @@
 
 ### Iniciar el proyecto:
 
-1. Clonan el proyecto en una nueva carpeta
-2. ejecutan: `npm i`
-3. Pasan a la rama develop: `git checkout develop`
-4. Crear archivo .env en la raiz del proyecto y completar las variables de entorno. Para crear el archivo se peude usar el archivo .env.example o ejecutar el siguiente comando: `cp .env.example .env`
-5. Correr el proyecto: `npm run dev`
-6. 
+1. Instalar dependencias
+```bash
+npm i
+```
+2. Preparar el archivo .env, ejecutar el siguiente comando y completarlo con la información de tu entorno local
+```bash
+cp .env.example .env
+```
+* ⚠️ Las claves de jwt pueden poner cualquier cosa para probar. La del captcha si tendría que ser real, pero de ultima le ponen cualquier cosa y como solo se usa ene l formulario de contacto, simplemente no usen ese endpoint.
+
+3. Correr proyecto:
+```bash
+npm run dev
+```
 
 
 
