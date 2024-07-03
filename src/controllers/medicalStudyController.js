@@ -126,4 +126,8 @@ const deleteStudy = async (req, res) => {
     }
 }
 
-module.exports = { returnAllStudies, returnOneStudy, addNewStudy, updateStudy, deleteStudy }
+module.exports = { returnAllStudies, 
+                    returnOneStudy, 
+                    addNewStudy, 
+                    updateStudy, 
+                    deleteStudy }
