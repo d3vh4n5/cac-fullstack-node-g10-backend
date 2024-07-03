@@ -14,7 +14,7 @@ router.get('/', authenticateToken, returnAllHistorias)
 router.get('/user-clinic-history', authenticateToken, returnUserHistory)
 router.get('/:id', authenticateToken, returnOneHistoria)
 router.post('/', authenticateToken, addNewHistoria)
-// router.put('/', authenticateToken, )
+// router.put('/:id', authenticateToken, )
 
 
 module.exports = router
