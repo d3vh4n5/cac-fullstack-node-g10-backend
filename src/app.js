@@ -10,7 +10,7 @@ const contactMessageRouter = require('./routes/contactMessageRouter')
 const authRouter = require('./routes/authRouter')
 const medicalStudyRouter = require('./routes/medicalStudyRouter')
 const clinicHistoryRouter = require('./routes/clinicHistoryRouter')
-// const upload = require('./middlewares/multer')
+const uploadsRouter = require('./routes/uploadsRouter')
 
 // middlewares
 app.use(cors()) // Por temas de seguridad del navegador
@@ -29,19 +29,10 @@ app.use(expressLayouts)
 app.use(express.static('public')) 
 // app.use(express.static(path.join(__dirname, 'public'))) 
 
+
 // Rutas de aplicacion
 app.use('/', appRouter);
-// app.post('/upload', upload.single('archivo'), (req, res)=> {
-//     console.log({ info: req.file })
-//     const filepath = saveFile(req.file)
-//     res.json({ msg:'Archivo subido con éxito', filepath})
-// })
-
-// app.post('/uploads', upload.array('archivos', 10), (req, res)=> {
-//     console.log({ info: req.files })
-//     req.files.map(saveFile)
-//     res.json({ msg:'Archivos subidos con éxito'})
-// })
+app.use('/uploads', uploadsRouter)
 
 
 // Rutas de API
