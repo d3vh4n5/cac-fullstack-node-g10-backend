@@ -40,6 +40,10 @@ sequelize: https://www.youtube.com/watch?v=TqpC6Ih05K8&t=1s
 
 Leifer Mendez:
 jwt: https://www.youtube.com/watch?v=gkzLAVh8tGM
+express-validator: https://www.youtube.com/watch?v=VMRgFfmv6j0&t=117s
+
+Jean Paul Ferreira:
+express-validator: https://www.youtube.com/watch?v=gjetVkKLUjU
 
 
 ### Web Dev Simplified (Inglés)

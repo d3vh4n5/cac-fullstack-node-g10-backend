@@ -11,9 +11,11 @@ const {
 } = require('../controllers/authController')
 const { authenticateUser } = require('../middlewares/authUser')
 const { authenticateToken } = require('../middlewares/authToken')
+const { registerValidatorRoules } = require('../validators/register.validator')
+const { loginValidatorRoules } = require('../validators/login.validator')
 
-router.post('/register', registerUser)
-router.post('/login', authenticateUser, getTokens)
+router.post('/register', registerValidatorRoules, registerUser)
+router.post('/login', loginValidatorRoules, authenticateUser, getTokens)
 router.post('/refresh-token', refreshToken)
 router.delete('/refresh-token', ) // Este deber ser la ruta de logout
 router.post('/forgotten-password', )

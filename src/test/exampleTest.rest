@@ -19,3 +19,13 @@ Content-Type: application/json
 {
     "data": "Esto es un nuevo ejemplo"
 }
+
+### Post pruebas de validacion
+POST http://localhost:5000/api/v1/examples/validator
+Content-Type: application/json
+
+{
+    "name": "John",
+    "password": "123Ac!4<>",
+    "email": "asd@mail.com"
+}
