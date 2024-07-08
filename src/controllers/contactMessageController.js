@@ -1,7 +1,7 @@
 const fs = require('node:fs')
 const ContactMessage = require('../models/ContactMessageModel')
 const { saveFile } = require('../utils/saveFile')
-const { captchaValidation } = require('../middlewares/captchaValidation.js')
+
 
 const getAllMessages = async (req, res) => {
     try {
@@ -33,8 +33,7 @@ const getOneMessage = async (req, res) => {
 
 const createNewMessage = async (req, res) => {
     const { body } = req
-    const token = body['g-recaptcha-response']
-
+    
     console.log({ body, file: req.file })
 
     if (req.file !== undefined){
@@ -45,17 +44,9 @@ const createNewMessage = async (req, res) => {
     }
 
     try{
-        const captchaValid = await captchaValidation(token)
-        if (captchaValid){
-            const message = new ContactMessage(body)
-            await message.save()
-            res.status(201).json(message)
-            return
-        } else {
-            res.status(422).json({ // 422 Unprocessable Entity
-                error: "Captcha inválido"
-            })
-        }
+        const message = new ContactMessage(body)
+        await message.save()
+        res.status(201).json(message)
     } catch (e){
         if (body.file !== ""){
             fs.unlinkSync(body.file);

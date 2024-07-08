@@ -8,12 +8,17 @@ const {
     deleteMessage
 } = require('../controllers/contactMessageController')
 const upload = require('../middlewares/multer')
+const { validateReCAPTCHA } = require('../middlewares/captchaValidation')
+const { contactMessageValidatorRoules } = require('../validators/contactMessage.validator')
 
 
-// Aquí iran sus rutas
 router.get('/', getAllMessages)
 router.get('/:id', getOneMessage)
-router.post('/', upload.single('file'), createNewMessage)
+router.post('/', 
+    upload.single('file'), 
+    contactMessageValidatorRoules, 
+    validateReCAPTCHA, 
+    createNewMessage)
 router.put('/:id', updateMessage)
 router.delete('/:id', deleteMessage)
 

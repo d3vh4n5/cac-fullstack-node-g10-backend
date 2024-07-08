@@ -14,7 +14,7 @@ const checkEmailNotInUse = (value, { req }) => {
         throw new Error('Este email está reservado')
     }
     // console.log({ req })
-    return true
+    return true // Siempre tiene que devolver un true
 }
 
 //Estoy creando u array de middlewares para checkear varios campos y 

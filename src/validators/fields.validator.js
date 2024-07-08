@@ -3,6 +3,7 @@
 const { check, body } = require('express-validator')
 
 exports.baseEmailChain = ()=> body('email').exists().trim().escape().notEmpty().isEmail()
+
 exports.baseNameChain = ()=> 
     check('name')
         .exists()
@@ -10,6 +11,7 @@ exports.baseNameChain = ()=>
         .not()
         .isEmpty()
         .withMessage('Nombre inválido')
+
 exports.basePasswordChain = () => 
     body('password')
         .exists()
@@ -17,3 +19,18 @@ exports.basePasswordChain = () =>
         .trim().escape()
         .notEmpty()
         .withMessage('Contraseña Inválida')
+
+exports.baseStringChain = varName => 
+    check(varName)
+        .exists()
+        .trim().escape()
+        .not()
+        .isEmpty()
+
+exports.baseSelectChain = varName =>
+    body(varName)
+        .exists()
+        .trim()
+        .escape()
+        .notEmpty()
+        .isInt()
