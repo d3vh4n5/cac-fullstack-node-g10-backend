@@ -92,43 +92,51 @@ const addNewHistoria = async (req, res) => {
 
 const updateHistoria = async (req, res) => {
     try {
+        const { id } = req.params
         const userId = req.user.id
-        const clinicHistory = await HistoriaClinica.findOne({
-            where: { userId }
-        })
-        res.send(clinicHistory)
+        const clinicHistory = await HistoriaClinica.findByPk(+id)
+
+        if (clinicHistory){
+            if (!clinicHistory.userId === userId ) {
+                return res.status(400).json({
+                    error: "La historia no pertenece al usuario"
+                })
+            }
+            const updatedHistoria = await HistoriaClinica.update(req.body, {
+                where: {
+                    id: req.params.id
+                }
+            })
+    
+            res.status(200).json({ 
+                msg: "Historia clínica actualizada con éxito",
+                updatedHistoria,
+                data: req.body
+            })
+        } else {
+            res.status(404).json({
+                error: "No se encontró la historia clínica"
+            })
+        }
+
     } catch (error) {
         console.log(error)
         res.status(500).json({
             error: "Ocurrió un error al obtener la historia"
         })
-       
-        const updatedHistoria = await HistoriaClinica.update(req.body, {
-            where: {
-                id: req.params.id
-            }
-        })
-
-        res.status(200).json({ 
-            msg: "Historia clínica actualizada con éxito",
-            updatedHistoria,
-            data: req.body
-        })
-
-
+    }
 }
 
 const deleteHistoria = async (req, res) => {
     try {
         const { id } = req.params
         const clinicHistory = await HistoriaClinica.findOne({
-            where: { userId }
+            where: { id }
         })
-        res.send(clinicHistory)
+        
         if (!clinicHistory) return res.status(404).json({
             error: "No existe la Historia Clínica"
         })
-
 
         const deletedHistoria = await HistoriaClinica.destroy({where: { id: id }})
         
