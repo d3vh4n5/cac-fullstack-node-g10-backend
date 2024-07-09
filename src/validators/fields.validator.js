@@ -34,3 +34,11 @@ exports.baseSelectChain = varName =>
         .escape()
         .notEmpty()
         .isInt()
+
+exports.baseDateChain = ()=>
+    body('date')
+        .exists()
+        .trim()
+        .escape()
+        .notEmpty()
+        .isDate()
