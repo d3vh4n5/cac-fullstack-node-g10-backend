@@ -35,10 +35,26 @@ exports.baseSelectChain = varName =>
         .notEmpty()
         .isInt()
 
-exports.baseDateChain = ()=>
-    body('date')
+exports.baseDateChain = varName =>
+    body(varName)
         .exists()
         .trim()
         .escape()
         .notEmpty()
         .isDate()
+
+exports.baseIntChain = varName =>
+    body(varName)
+        .exists()
+        .trim()
+        .escape()
+        .notEmpty()
+        .isInt()
+
+exports.baseBooleanChain = varName =>
+    body(varName)
+        .optional()
+        .trim()
+        .escape()
+        .notEmpty()
+        .isBoolean()

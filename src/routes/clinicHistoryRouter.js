@@ -10,12 +10,13 @@ const {
     returnUserHistory,
     deleteHistoria
 } = require('../controllers/historiaClinicaController')
+const { clinicHistoryValidatorRoules } = require('../validators/clinicHistory.validator')
 
 router.get('/', authenticateToken, returnAllHistorias)
 router.get('/user-clinic-history', authenticateToken, returnUserHistory)
 router.get('/:id', authenticateToken, returnOneHistoria)
-router.post('/', authenticateToken, addNewHistoria)
-router.put('/:id', authenticateToken, updateHistoria)
+router.post('/', authenticateToken, clinicHistoryValidatorRoules, addNewHistoria)
+router.put('/:id', authenticateToken, clinicHistoryValidatorRoules, updateHistoria)
 router.delete('/:id', authenticateToken, deleteHistoria)
 
 module.exports = router
