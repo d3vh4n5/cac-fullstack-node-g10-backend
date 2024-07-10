@@ -8,7 +8,7 @@ const {
 exports.medicalStudyValidatorRoules = [
     baseStringChain('name'),
     baseStringChain('description'),
-    baseDateChain(),
+    baseDateChain('date'),
     body('type')
         .exists()
         .trim()
