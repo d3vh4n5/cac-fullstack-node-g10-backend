@@ -2,7 +2,14 @@
 // específicamente del cuerpo de la petición
 const { check, body } = require('express-validator')
 
-exports.baseEmailChain = ()=> body('email').exists().trim().escape().notEmpty().isEmail()
+exports.baseEmailChain = ()=> 
+    body('email')
+        .exists()
+        .trim()
+        .escape()
+        .notEmpty()
+        .isEmail()
+        .normalizeEmail()
 
 exports.baseNameChain = ()=> 
     check('name')
