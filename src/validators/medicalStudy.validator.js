@@ -15,16 +15,16 @@ exports.medicalStudyValidatorRoules = [
         .escape()
         .notEmpty()
         .isInt(),
-    body('file')
-        .custom((value, { req }) => {
-            const { file } = req
+    // body('file')
+    //     .custom((value, { req }) => {
+    //         const { file } = req
             
-            if (!file){
-                throw new Error("Archivo requerido") 
-            }
+    //         if (!file){
+    //             throw new Error("Archivo requerido") 
+    //         }
 
-            return true // Siempre tiene que devolver un true
-        }),
+    //         return true // Siempre tiene que devolver un true
+    //     }),
 
     validateResult
 ]
