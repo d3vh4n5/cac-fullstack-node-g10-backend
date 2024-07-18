@@ -5,3 +5,22 @@
 .error{
     color: red;
 }
+
+.invitation{
+    background: rgba(116, 230, 205, 0.1);
+    margin-block: 50px;
+    color: orange;
+    padding: 60px 30px;
+    font-size: 30px;
+    border: 2px dashed;
+    border-radius: 15px;
+}
+
+.video-container{
+    margin-block: 50px;
+
+    iframe{
+        aspect-ratio: 16/9;
+        width: min(500px, 100%);
+    }
+}
